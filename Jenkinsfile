@@ -12,7 +12,7 @@ pipeline {
             steps {
                 script {
                     // Initialize Terraform for the chosen environment
-                    bat "terraform init -backend-config=bucket=my-terraform-state-bucket -backend-config=key=env/${params.ENVIRONMENT}/terraform.tfstate -backend-config=region=us-east-1"
+                    bat "terraform init -backend-config=bucket=state-for-diff-env -backend-config=key=env/${params.ENVIRONMENT}/terraform.tfstate -backend-config=region=us-east-1"
                 }
             }
         }
