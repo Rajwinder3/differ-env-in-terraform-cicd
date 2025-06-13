@@ -35,16 +35,5 @@ pipeline {
             }
         }
 
-        stage('Terraform Destroy') {
-            when {
-                branch 'main' // Only destroy if we are on the 'main' branch (or other conditions)
-            }
-            steps {
-                script {
-                    // Optionally, ask before destroying. Here we just run it automatically.
-                    bat "terraform destroy -var \"environment=${params.ENVIRONMENT}\" -auto-approve"
-                }
-            }
-        }
     }
 }
