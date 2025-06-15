@@ -25,8 +25,8 @@ jobs:
 
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v3
-  with:
-    terraform_version: 1.6.6
+      with:
+        terraform_version: 1.6.6
 
     - name: Check Terraform version
       run: terraform version
@@ -40,9 +40,6 @@ jobs:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-1
-
-    - name: Terraform Init
-      run: terraform init
 
     - name: Select Workspace
       run: |
