@@ -23,10 +23,10 @@ module "rds" {
   vpc_id             = module.vpc.vpc_id
   private_subnet_ids = module.vpc.private_subnet_ids
 
-  db_identifier =  lookup(var.db_identifier,var.environment, "rds_db")
-  db_name       = lookup(var.db_name, var.environment, "rds_db")
-  db_username   = lookup(var.db_username, var.environment, "rds_db")
-  db_password   = lookup(var.db_password, var.environment, "rds_db")
+  db_identifier =  lookup(var.db_identifier,terraform.workspace, "rds_db")
+  db_name       = lookup(var.db_name, terraform.workspace, "rds_db")
+  db_username   = lookup(var.db_username, terraform.workspace, "rds_db")
+  db_password   = lookup(var.db_password, terraform.workspace, "rds_db")
 }
 
 
@@ -37,9 +37,9 @@ module "rds" {
 # resource "aws_dynamodb_table" "terraform_lock" {
 #   name="terraform-lock"
 #   billing_mode = "PAY_PER_REQUEST"
-#   hash_key = "lock_id"
+#   hash_key = "LockID"
 #   attribute {
-#     name = "lock_id"
+#     name = "LockID"
 #     type = "S"
 #   }
 # }
